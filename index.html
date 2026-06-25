@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nama Kafe Anda - Tempat Nongkrong Terbaik</title>
+    
+    <!-- Mengambil Font dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #6F4E37; /* Warna Kopi */
+            --secondary-color: #F5E6CA; /* Warna Krem Susu */
+            --accent-color: #D4A373; /* Warna Cokelat Muda */
+            --text-dark: #2C2C2C;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background-color: #FAFAFA;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 { font-family: 'Lora', serif; }
+
+        /* --- Navigation --- */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); }
+        
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 2rem; }
+
+        .btn-cta {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-cta:hover { background-color: var(--accent-color); }
+
+        /* --- Sections General --- */
+        section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 3rem; }
+        .section-title h2 { font-size: 2.5rem; color: var(--primary-color); }
+
+        /* --- Menu Section --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-category h3 { 
+            border-bottom: 2px solid var(--accent-color); 
+            padding-bottom: 0.5rem; 
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 0.5rem;
+        }
+
+        /* --- Gallery --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .gallery-item img:hover { transform: scale(1.02); }
+
+        /* --- Contact --- */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            background: var(--secondary-color);
+            padding: 3rem;
+            border-radius: 10px;
+        }
+
+        /* --- Floating WA --- */
+        .float-wa {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            transition: transform 0.3s;
+        }
+        .float-wa:hover { transform: scale(1.1); }
+        .float-wa img { width: 35px; height: 35px; }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Sederhana untuk mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">☕ Nama Kafe</div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Suasana</a></li>
+                <li><a href="#contact">Lokasi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Seduhan Kopi, Cerita Hari Ini</h1>
+            <p>Nikmati aroma kopi pilihan dan suasana nyaman untuk bekerja atau bersantai.</p>
+            <a href="#menu" class="btn-cta">Lihat Menu Kami</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="section-title">
+            <h2>Cerita Kami</h2>
+            <p>Dari biji kopi terbaik hingga secangkir kebahagiaan</p>
+        </div>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+            Kami hadir untuk memberikan pengalaman ngopi yang berbeda. Dengan barista berpengalaman dan biji kopi lokal pilihan, setiap tegukan adalah perjalanan rasa. Tempat ini didesain agar Anda merasa seperti di rumah sendiri.
+        </p>
+    </section>
+
+    <!-- Menu -->
+    <section id="menu" style="background-color: #fff;">
+        <div class="section-title">
+            <h2>Menu Favorit</h2>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-category">
+                <h3>Signature Coffee</h3>
+                <div class="menu-item"><span>Kopi Susu Gula Aren</span><span>Rp 25.000</span></div>
+                <div class="menu-item"><span>V60 Manual Brew</span><span>Rp 30.000</span></div>
+                <div class="menu-item"><span>Caramel Macchiato</span><span>Rp 32.000</span></div>
+            </div>
+            <div class="menu-category">
+                <h3>Non-Coffee & Snacks</h3>
+                <div class="menu-item"><span>Matcha Latte</span><span>Rp 28.000</span></div>
+                <div class="menu-item"><span>Chocolate Hazelnut</span><span>Rp 28.000</span></div>
+                <div class="menu-item"><span>Croissant Butter</span><span>Rp 20.000</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+        <div class="section-title">
+            <h2>Galeri Suasana</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Interior"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Kopi"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Barista"></div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="contact-container">
+            <div>
+                <h3>📍 Lokasi Kami</h3>
+                <p>Jl. Contoh No. 123, Kota Anda.</p>
+                <br>
+                <h3>🕒 Jam Buka</h3>
+                <p>Senin - Minggu: 08.00 - 22.00 WIB</p>
+            </div>
+            <div>
+                <h3>📞 Hubungi Kami</h3>
+                <p>WhatsApp: +62 812-XXXX-XXXX</p>
+                <p>Email: halo@namakafe.com</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 2rem; background: #333; color: #fff;">
+        <p>&copy; 2026 Nama Kafe Anda. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20reservasi%20di%20kafe" class="float-wa" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+    </a>
+
+</body>
+</html>
